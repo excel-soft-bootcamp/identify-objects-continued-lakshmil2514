@@ -75,6 +75,7 @@ public partial class HiddenField : System.Web.UI.Page
             Response.Redirect("Home.aspx");
 
         }
+        
   - Control State
     1. Used for enabling the View State Property
     2. Defines a custom view
@@ -95,6 +96,7 @@ protected void Page_Load(object sender, EventArgs e)
             Label1.Text = id;
             Label2.Text = name;
         }
+        
 - Server-Side 
   - Session State
       1. Maintains the state of user information by using a session ID. 
