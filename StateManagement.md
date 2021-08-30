@@ -13,9 +13,48 @@
       2. Used for holding data temporarily
       3. Can store any type of data
       4. Property dependent
+
+public partial class ViwState : System.Web.UI.Page
+    {
+        int i = 0;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if(!IsPostBack)
+            {
+                ViewState["username"] = i;
+            }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+            i = (int)ViewState["username"];
+            Label1.Text = (++i).ToString();
+            ViewState["username"] = i; 
+        }
+    }
+
   - Hidden field
     1. Contains a small amount of memory
     2. Direct functionality access
+
+public partial class HiddenField : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            HiddenField1.Value = TextBox1.Text;
+        }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Label1.Text = HiddenField1.Value;
+        }
+    }
+
+
   - Cookies
      - Persistent Cookie
      - Non-Persistent Cookie
@@ -24,6 +63,18 @@
     3. Can be changed depending on requirements
     4. User Preferred
     5. Requires only a few bytes or KBs of space for creating cookies
+
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            HttpCookie cookie = new HttpCookie("MyCookie");
+            cookie.Value = TextBox1.Text;
+            cookie.Expires = DateTime.Now.AddSeconds(15);
+            Response.Cookies.Add(cookie);
+
+            Response.Redirect("Home.aspx");
+
+        }
   - Control State
     1. Used for enabling the View State Property
     2. Defines a custom view
@@ -36,16 +87,38 @@
     3.  Switches info from one to another page
     4. Increase performance
     5. Uses real and virtual path values for URL routing
+
+protected void Page_Load(object sender, EventArgs e)
+        {
+            string id = Request.QueryString["id"];
+            string name = Request.QueryString["name"];
+            Label1.Text = id;
+            Label2.Text = name;
+        }
 - Server-Side 
   - Session State
       1. Maintains the state of user information by using a session ID. 
       2. When users makes a request without a session ID, ASP.NET creates a session ID and sends it with every request and response to the same user.
       3. session_start and session_end special file called Global.asax in the root directory
+
+protected void Button1_Click(object sender, EventArgs e)
+        {
+            Session["Data"] = TextBox1.Text;
+            Response.Redirect("SessionRedirect.aspx");
+        }
       
   - Application State
     1. Data stored in the application should be of small size. 
     2. The date stored in application state is common for all users
     3. Application_Error it is raised when an unhandled exception occurs
+
+ protected void Button1_Click(object sender, EventArgs e)
+        {
+            Application["Data"]=TextBox1.Text;
+            Response.Redirect("ApplicationRedirect.aspx");
+        }
+        
+        
 
 ###  Client-Side State Management
 
