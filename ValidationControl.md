@@ -69,6 +69,24 @@
    DisplayMode = "BulletList" ShowSummary = "true" HeaderText="Errors:" />
    
   
+  # Validation Grouping
+  
+            <asp:TextBox ID="TextBox1" runat="server"> </asp:TextBox><br />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="*" ValidationGroup="PartOne"></asp:RequiredFieldValidator><br />
+
+            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox><br />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="*" ValidationGroup="PartOne"></asp:RequiredFieldValidator><br />
+
+            <asp:Button ID="Button1" runat="server" Text="Create" ValidationGroup="PartOne" OnClick="Button1_Click"/><br />
+
+            <asp:TextBox ID="TextBox3" runat="server"> </asp:TextBox><br />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox3" ErrorMessage="*" ValidationGroup="PartTwo"></asp:RequiredFieldValidator><br />
+
+            <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox><br />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TextBox4" ErrorMessage="*" ValidationGroup="PartTwo"></asp:RequiredFieldValidator>
+
+            <asp:Button ID="Button2" runat="server" Text="Submit" ValidationGroup="PartTwo" OnClick="Button2_Click"/>
+  
  
   
 
