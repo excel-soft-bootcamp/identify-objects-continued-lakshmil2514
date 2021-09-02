@@ -12,8 +12,7 @@
 1. Output Caching
 2. Data Caching
 3. Object Caching
-4. Class Caching
-5. Configuration Caching
+
 
 ### Output Chaching 
 
