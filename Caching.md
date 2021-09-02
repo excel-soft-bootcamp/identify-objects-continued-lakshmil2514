@@ -8,9 +8,20 @@
 2. If the application releases its memory,
 3. If caching does not take place for some reason.
 * ASP.NET provides the following different types of caching:
-a. Output Caching
-b. Data Caching
-c. Object Caching
-d. Class Caching
-e. Configuration Caching
+ 
+1. Output Caching
+2. Data Caching
+3. Object Caching
+4. Class Caching
+5. Configuration Caching
+
+### Output Chaching 
+
+<%@ OutputCache Duration="15" VaryByParam="None" %>
+
+protected void Page_Load(object sender, EventArgs e)
+{
+    Label1.Text = DateTime.Now.ToLongTimeString();
+   
+}
 
