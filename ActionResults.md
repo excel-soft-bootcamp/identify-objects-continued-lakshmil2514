@@ -12,12 +12,12 @@
 7. JavaScriptResult
 
 ### View result 
-public ViewResult Index()  
+    public ViewResult Index()  
     {  
         return View();  
     }  
     
-    ### PartialViewResult
+### PartialViewResult
     public PartialViewResult Index()  
     {  
         return PartialView("Second View");  
@@ -25,11 +25,19 @@ public ViewResult Index()
     
    ### ContentResult 
    
-  public ContentResult content()
+         public ContentResult content()
         {
             return Content(
             "<script> alert('Hi! I am from Mysore') </script>"
                 );
         }
+        
+   ### RedirectionResult
+   
+   public RedirectResult content()
+        {
+            return Redirect("https://www.google.com");
+        }
+
 
     
