@@ -15,26 +15,60 @@ string country = ViewData["MyCountry"].ToString();
 using System.Collections.Generic;
 using System.Web.Mvc;
 namespace DemoMvcApplication.Controllers{
-   public class HomeController : Controller{
-      public ViewResult Index(){
-         ViewData["Countries"] = new List<string>{
-            "India",
-            "Malaysia",
-            "Dubai",
-            "USA",
-            "UK"
-         };
-         return View();
-      }
+   public class HomeController : Controller
+   {
+      public ActionResult Index()  
+        {  
+            List<string> Courses = new List<string>();  
+            Courses.Add("J2SE");  
+            Courses.Add("J2EE");  
+            Courses.Add("Spring");  
+            Courses.Add("Hibernates");  
+            ViewData["Courses"] = Courses;  
+            return View();  
+        }  
    }
 }
-  
-  @{
-   ViewBag.Title = "Countries List";
-}
-<h2>Countries List</h2>
-<ul>
-@foreach(string country in (List<string>)ViewData["Countries"]){
-   <li>@country</li>
-}
-</ul>
+  <h2>List of Courses</h2>  
+    <ul>  
+        @{  
+            foreach (var Courses in ViewData["Courses"] as List<string>)  
+            {  
+                <li> @Courses</li>  
+            }  
+        }  
+    </ul>  
+       
+# View Bag
+   
+* The ViewBag in ASP.NET MVC is used to transfer temporary data (which is not included in the model) from the controller to the view.
+* You can assign any number of properties and values to ViewBag
+* If you assign the same property name multiple times to ViewBag, then it will only consider last value assigned to the property.
+* ViewBag only transfers data from controller to view, not visa-versa. ViewBag values will be null if redirection occurs.
+       
+        public ActionResult Index()  
+        {  
+            List<string> Courses = new List<string>();  
+            Courses.Add("J2SE");  
+            Courses.Add("J2EE");  
+            Courses.Add("Spring");  
+            Courses.Add("Hibernates");  
+            ViewBag.Courses = Courses;  
+            return View();  
+        }  
+       
+       <h2>List of Courses</h2>  
+    <ul>  
+        @{  
+            foreach (var Courses in ViewBag.Courses)  
+            {  
+                <li> @Courses</li>  
+            }  
+        }  
+    </ul>  
+   
+   ### Limitations
+   
+ * ViewBag doesn't require typecasting while retrieving values from it. This can throw a run-time exception if the wrong method is used on the value.
+ * ViewBag is a dynamic type and skips compile-time checking. So, ViewBag property names must match in controller and view while writing it manually
+   
