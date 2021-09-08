@@ -31,3 +31,22 @@ routes.MapRoute(
   url: "Home/About-WDI",  
   defaults: new { controller = "Home", action = "About", id = UrlParameter.Optional }  
 );  
+
+## Route Constraints in Asp.Net MVC
+
+routes.MapRoute(
+ "Default", // Route name
+ "{controller}/{action}/{id}", // Route Pattern
+ new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Default values for parameters
+);
+
+Restrict to numeric id only
+
+routes.MapRoute(
+ "Default", // Route name
+ "{controller}/{action}/{id}", // Route Pattern
+ new { controller = "Home", action = "Index", id = UrlParameter.Optional }, // Default values for parameters
+ new { id = @"\d+" } //Restriction for id
+);
+
+http://example.com/Home/Index/1
