@@ -12,3 +12,49 @@ It combines all of them into a single programming model.
 Then how it deals with configuration settings, authentication and application start specific code execution.    
 
 3. As ASP.NET Core is almost a combination of NET frameworks, app developers can still run the apps on NET Core even with NET Frameworks.
+
+
+
+# CROS
+
+ * CORS Stands for Cross-Origin Resource Sharing
+* Using CORS, a server can explicitly allow some cross-origin requests while rejecting others.
+* Per action
+To specify a CORS policy for a specific action add the [EnableCors] attribute to the action. Specify the policy name.
+
+public class HomeController : Controller
+{
+    [EnableCors("AllowSpecificOrigin")] 
+    public IActionResult Index()
+    {
+        return View();
+    }
+}
+* Per controller
+To specify the CORS policy for a specific controller add the [EnableCors] attribute to the controller class. Specify the policy name.
+
+[EnableCors("AllowSpecificOrigin")]
+public class HomeController : Controller
+{
+}
+
+* Globally
+You can enable CORS globally for all controllers by adding the CorsAuthorizationFilterFactory filter to the global filter collection:
+
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc();
+    services.Configure<MvcOptions>(options =>
+    {
+        options.Filters.Add(new CorsAuthorizationFilterFactory("AllowSpecificOrigin"));
+    });
+}
+    
+* Disable CORS
+To disable CORS for a controller or action, use the [DisableCors] attribute.
+
+    [DisableCors]
+    public IActionResult About()
+    {
+        return View();
+    }
