@@ -11,3 +11,13 @@
 -  This happens immediately and automatically, ensures that the HTML template and the TypeScript code are updated at all times
 -  In two way data binding, property binding and event binding are combined together.
 -  For two way data binding, we have to enable the ngModel directive. It depends upon FormsModule in angular/forms package, so we have to add FormsModule in imports[] array in the AppModule.
+
+## One way Data Binding
+1. String interpolation
+    Example: {{ data }}
+2. Property Binding
+    Exampple: <img [src]="imgUrl"/>
+3. Event Binding
+    Example: <button (click)="goBack()"></button>  
+## Two-way Data Binding
+     Syntax:[(ngModel)] = "[property of your component]"  
